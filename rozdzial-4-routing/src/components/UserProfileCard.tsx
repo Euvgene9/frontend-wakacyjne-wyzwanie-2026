@@ -19,7 +19,7 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
         href={`/users/${user.id}`}
         className="inline-block bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700"
       >
-        Zobacz profil
+        Check the profile
       </Link>
     </div>
   );
