@@ -23,7 +23,7 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
 
   return (
     // Nadanie elementowi klasy @container w celu obserwacji zmiany jego rozmiaru
-    <Card className="@container relative mx-auto max-w-none w-full pt-4">
+    <Card className="@container group relative mx-auto max-w-none w-full pt-4">
       <Avatar className="size-24 mx-auto @md:ml-(--card-spacing)">
         <AvatarImage src={avatarUrl} />
         <AvatarFallback className="uppercase">{fallbackAvatar}</AvatarFallback>
@@ -48,7 +48,13 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
         <Link
           className={buttonVariants({
             size: 'lg',
-            className: 'w-full @md:w-fit'
+            className: `
+              w-full @md:w-fit
+              opacity-0 scale-95
+              transition-all duration-200 ease-out
+              group-hover:opacity-100 group-hover:scale-100
+              group-focus-within:opacity-100 group-focus-within:scale-100
+            `
           })}
           href={profileUrl}
         >

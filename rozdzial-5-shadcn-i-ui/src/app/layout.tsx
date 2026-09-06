@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { PropsWithChildren } from "react";
 import "./globals.css";
-import Link from "next/link";
-import { NAV_LINKS } from "@/src/config";
+import { Navbar } from "../components/Navbar";
+import { ThemeProvider } from "@/src/components/theme-provider"
+import { ModeToggle } from "../components/ModeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,24 +25,25 @@ export default function RootLayout({ children, modal }: PropsWithChildren & { mo
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
       <div>
-        <nav className="inset-0 py-6 grid place-items-center">
-          <ul className="flex items-center gap-4">
-            {NAV_LINKS.map(link => (
-              // Obsługa zdarzenia 'hover'
-              <li key={link.id} className="transition-colors hover:text-blue-500">
-                <Link href={link.href}>{link.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
+        <Navbar/>
         <main className="py-16 max-w-4xl mx-auto">{children}</main>
         {modal}
       </div>
+      <div className="fixed top-4 right-4 z-50">
+              <ModeToggle />
+            </div>
+       </ThemeProvider>
       </body>
     </html>
   );
