@@ -1,4 +1,5 @@
 import TeamMemberCard from "@/components/TeamMemberCard";
+import Script  from "next/script";
 
 export default function Home() {
   return (
@@ -8,7 +9,13 @@ export default function Home() {
         role="Frontend Developer"
         bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis arcu vitae erat sollicitudin, ac hendrerit neque auctor."
         skills={["React", "Next.js", "Tailwind CSS", "TypeScript"]}
+        photoSrc="/boss.jpg"
       />
+      <Script 
+        id="new-alert" 
+        strategy="lazyOnload">
+          {`alert("Big Boss!");`}
+      </Script>
     </main>
   );
 }
