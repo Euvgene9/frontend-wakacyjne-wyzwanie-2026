@@ -4,6 +4,18 @@ import { ProductCard } from "@/components/product-card";
 import { ProductEmptyState } from "@/components/product-empty-state";
 import { ProductGrid } from "@/components/product-grid";
 import { searchProducts } from "@/lib/products";
+import { Metadata } from "next";
+
+
+export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 
 interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
